@@ -1,4 +1,4 @@
-var values = getValues();
+// var values = getValues();
 function getValues(path) {
     var retrievedObject = localStorage.getItem(path));
     if (retrievedObject == null || retrievedObject == undefined) {
