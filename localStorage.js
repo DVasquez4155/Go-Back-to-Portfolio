@@ -14,5 +14,5 @@ function addValue(path,value) {
         return;
     }
     values.push(value);
-    updateValues()
+    updateValues(path)
 }
