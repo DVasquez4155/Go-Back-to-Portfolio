@@ -1,27 +1,69 @@
 //Example of how this API can be used
-// var weather = new getResponse("https://api.openweathermap.org/data/2.5/weather", "?appid=01ca9f9b934a40c31918c2ee0f5d52e4", "&q=San+Jose")
-// var cat = new getResponse("https://aws.random.cat/meow", "", "")
-// weather.done(
-//     function (response){
-//         console.log(response)
+
+// var weatherOptions = {
+//     url : "https://api.openweathermap.org/data/2.5/weather",
+//     api : "?appid=01ca9f9b934a40c31918c2ee0f5d52e4",
+//     query : "&q=San+Jose",
+//     cors : false,
+//     result : function (response) {
+//         console.log(response);
 //     }
-// )
-// cat.done(
-//     function (response){
-//         console.log(response)
+// }
+// var weather = new JSON(weatherOptions);
+
+// var cat = new JSON(
+//     {
+//         url : "https://aws.random.cat/meow",
+//         result : function (response) {
+//             console.log(response.file);
+//         }
 //     }
-// )
+// );
 
 //Response
-function getResponse(url, apiKey, query) {
-    this.url = url;
-    this.apiKey = apiKey;
-    this.query = query;
-    
-    this.queryURL = function() {return this.url + this.apiKey + this.query;};
+function JSON(options) {
+    //Check to see if a variable is undefined
+    function checkIfDefined (variable) {
+        if (variable == undefined) {
+            return "";
+        }
+        else {
+            return variable
+        };
+    }
+    //Set variables
+    this.url = checkIfDefined(options.url);
+    this.api = checkIfDefined(options.api);
+    this.query = checkIfDefined(options.query);
+    if (options.cors == undefined) {
+        this.cors = false;
+    }
+    else {
+        this.cors = options.cors;
+    }
+    //Check to see if user enabled cors
+    var corsAnywhere = '';
+    if (this.cors) {
+        corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
+    }
+    this.queryURL = corsAnywhere + this.url + this.api + this.query;
+    //Ajax call
     var ajax =  $.ajax({
-        url: this.queryURL(),
-        method: "GET"
-    });
-    return ajax
-  }
+        url: this.queryURL,
+        method: "GET",
+        crossDomain: true,
+        dataType: "json"
+    })
+    .done(
+        function (response) {
+            options.result(response);
+        }
+    )
+    .fail(
+        function (response) {
+            alert('JSON Call Failed, Check Console')
+            console.log(response.responseJSON)
+        }
+    );
+    this.ajax = ajax;
+}
