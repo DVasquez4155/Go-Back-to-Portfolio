@@ -61,7 +61,7 @@ function JSON(options) {
     )
     .fail(
         function (response) {
-            alert('JSON Call Failed, Check Console')
+            options.result(response);
             console.log(response)
             console.log(response.responseJSON)
         }
