@@ -35,11 +35,18 @@ function JSON(options) {
     this.url = checkIfDefined(options.url);
     this.api = checkIfDefined(options.api);
     this.query = checkIfDefined(options.query);
+    this.headers = checkIfDefined(options.headers)
     if (options.cors == undefined) {
         this.cors = false;
     }
     else {
         this.cors = options.cors;
+    }
+    if (options.method == undefined) {
+        this.method = "GET";
+    }
+    else {
+        this.method = options.method;
     }
     //Check to see if user enabled cors
     var corsAnywhere = '';
@@ -50,8 +57,9 @@ function JSON(options) {
     //Ajax call
     var ajax =  $.ajax({
         url: this.queryURL,
-        method: "GET",
+        method: this.method,
         crossDomain: true,
+        headers: this.headers,
         dataType: "json"
     })
     .done(
