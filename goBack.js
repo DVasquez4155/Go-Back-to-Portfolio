@@ -5,7 +5,7 @@ $(goBackDiv)
 .attr('style', 'position: fixed; bottom: 10px; right: 10px;');
 var goBackLink = document.createElement('a');
 $(goBackLink)
-.attr('href', 'https://dvasquez4155.github.io/portfolio.html')
+.attr('href', 'https://dvasquez4155.github.io/projects.html')
 .addClass('alert-link-light mb-0')
 .html('Go Back to Portfolio');
 $(body).append(goBackDiv);
