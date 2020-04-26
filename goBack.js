@@ -1,5 +1,5 @@
 var body = document.body;
-var goBackDiv = '<div class="alert alert-info mb-0" style="position: fixed;bottom: 10px;right: 10px;box-sizing: border-box;padding: .75rem 1.25rem;margin-bottom: 0!important;border: 1px solid transparent;border-radius: .25rem;color: #fff;background-color: #343a40;border-color: #fff;"><a href="https://dvasquez4155.github.io/projects.html" class="alert-link-light mb-0" style="box-sizing: border-box;color: #fff;background-color: transparent;margin-bottom: 0!important;">Go Back to Portfolio</a></div>';
+var goBackDiv = '<div class="alert alert-info mb-0" style="position: fixed;bottom: 10px;right: 10px;box-sizing: border-box;padding: .75rem 1.25rem;margin-bottom: 0!important;border: 1px solid transparent;border-radius: .25rem;color: #fff;background-color: #343a40;border-color: #fff;"><a href="https://www.dvasquez4155.com/projects" class="alert-link-light mb-0" style="box-sizing: border-box;color: #fff;background-color: transparent;margin-bottom: 0!important;">Go Back to Portfolio</a></div>';
 // var goBackDiv = document.createElement('div');
 // $(goBackDiv)
 // .addClass('alert alert-info mb-0')
