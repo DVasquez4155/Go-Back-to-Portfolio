@@ -51,7 +51,7 @@ function JSON(options) {
     //Check to see if user enabled cors
     var corsAnywhere = '';
     if (this.cors) {
-        corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
+        corsAnywhere = 'https://boiling-gorge-84466.herokuapp.com/';
     }
     this.queryURL = corsAnywhere + this.url + this.api + this.query;
     //Ajax call
